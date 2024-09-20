@@ -184,7 +184,6 @@ void handle_key(char key) {
     else if (key >= '0' && key <= '9') {//if key is a number, then:
       thrust = key - '0';//the -0 at the end will turn the character into an integer. This has to do with ASCII, where the key will use the ASCII value and subtract it by the ASCII value of 0. 
     }
-    }
 }
 
 //-------------------------------
@@ -246,9 +245,8 @@ void update_variables() {
         mode = 'C';
       }
       return;
-      }
-      velo += thrust - 5;
     }
+      velo += thrust - 5;
 }
 
 
