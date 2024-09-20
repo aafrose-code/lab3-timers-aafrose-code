@@ -149,7 +149,7 @@ void drive_column(int c) {
  */
 int read_rows() {
     RCC->AHBENR |= RCC_AHBENR_GPIOCEN;//Enabling clock for port C
-    int returnRow = GPIO->IDR & 0x0000000F;//read the state of the port and store that state in the returnRow variable
+    int returnRow = GPIOC->IDR & 0x0000000F;//read the state of the port and store that state in the returnRow variable
     return returnRow;//returns the value
 }
 
@@ -180,6 +180,7 @@ char rows_to_key(int rows) {
 void handle_key(char key) {
     if (key == 'A' | key == 'B' | key == 'D') {//if the key is A, B, or D, then:
       mode = key;//make the mode the key given by the user
+    } 
     else if (key >= '0' && key <= '9') {//if key is a number, then:
       thrust = key - '0';//the -0 at the end will turn the character into an integer. This has to do with ASCII, where the key will use the ASCII value and subtract it by the ASCII value of 0. 
     }
@@ -241,7 +242,7 @@ void update_variables() {
     if (alt <= 0) {
       if (velo < 10) {
         mode = 'L';
-      else {
+      } else {
         mode = 'C';
       }
       return;
